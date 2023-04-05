@@ -40,7 +40,7 @@ def find_collision():
         file.write(f"{x}, {BadHash44(x)}\n")
         file.write(f"{x_prime}, {BadHash44(x_prime)}\n")
 
-        if BadHash42(x) == BadHash44(x_prime):
+        if BadHash44(x) == BadHash44(x_prime):
             
             print(f"x hash: {BadHash44(x)}")
             print(f"x prime hash: {BadHash44(x_prime)}")
