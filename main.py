@@ -1,7 +1,7 @@
 import hashlib
 import random
 
-def BadHash42(msg):
+def BadHash44(msg):
         
 	msg = msg.encode()
 	hashMsg = hashlib.sha256(msg).hexdigest()
@@ -25,8 +25,8 @@ def find_collision():
     i = 0
     while i < 2**(n/2):
         
-        x = BadHash42(x)
-        x_prime = BadHash42(BadHash42(x_prime))
+        x = BadHash44(x)
+        x_prime = BadHash44(BadHash44(x_prime))
         if x == x_prime:
             break
 
@@ -37,20 +37,20 @@ def find_collision():
     
     for j in range(i):
 
-        file.write(f"{x}, {BadHash42(x)}\n")
-        file.write(f"{x_prime}, {BadHash42(x_prime)}\n")
+        file.write(f"{x}, {BadHash44(x)}\n")
+        file.write(f"{x_prime}, {BadHash44(x_prime)}\n")
 
-        if BadHash42(x) == BadHash42(x_prime):
+        if BadHash42(x) == BadHash44(x_prime):
             
-            print(f"x hash: {BadHash42(x)}")
-            print(f"x prime hash: {BadHash42(x_prime)}")
+            print(f"x hash: {BadHash44(x)}")
+            print(f"x prime hash: {BadHash44(x_prime)}")
 
             file.close()
 
             return x, x_prime
         
-        x = BadHash42(x)
-        x_prime = BadHash42(x_prime)
+        x = BadHash44(x)
+        x_prime = BadHash44(x_prime)
     
     return None, None # No collision found
 
